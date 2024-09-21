@@ -6,8 +6,34 @@ document.getElementById('calculate').addEventListener('click', function () {
     const courses = parseFloat(document.getElementById('courses').value);
     const internet = parseFloat(document.getElementById('internet').value);
 
+    // Validation:
+    if (income <= 0 || isNaN(income)) {
+        document.getElementById('income-error').classList.remove('hidden');
+        return;
+    }
+
+    if (software  <= 0 || isNaN(software)) {
+        document.getElementById('software-error').classList.remove('hidden');
+        return;
+    }
+
+    if (courses <= 0 || isNaN(courses)) {
+        document.getElementById('courses-error').classList.remove('hidden');
+        return;
+    }
+
+    if (internet <= 0 || isNaN(internet)) {
+        document.getElementById('internet-error').classList.remove('hidden');
+        return;
+    }
+
     const expenses = software + courses + internet;
     const balance = income - expenses;
+
+    if (expenses > income) {
+        document.getElementById('logic-error').classList.remove('hidden');
+        return;
+    }
 
     document.getElementById('total-expenses').innerText = expenses.toFixed(2);
     document.getElementById('balance').innerText = balance.toFixed(2);
