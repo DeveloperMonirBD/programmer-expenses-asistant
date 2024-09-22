@@ -120,11 +120,19 @@ document.getElementById('calculate-savings').addEventListener('click', function 
     const courses = parseFloat(document.getElementById('courses').value);
     const internet = parseFloat(document.getElementById('internet').value);
 
+    // clean the input section:
+    document.getElementById('income').value = '';
+    document.getElementById('software').value = '';
+    document.getElementById('courses').value = '';
+    document.getElementById('internet').value = '';
+    
+
     const totalExpenses = software + courses + internet;
     const balance = income - totalExpenses;
 
     const savings = parseFloat(document.getElementById('savings').value);
     const savingsAmount = (savings * balance) / 100;
+    document.getElementById('savings').value = '';
     // document.getElementById('savings-amount').innerText = savingsAmount.toFixed(2);
     document.getElementById('savings-amount').innerText = formatCurrency(savingsAmount);
 
